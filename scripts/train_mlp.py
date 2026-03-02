@@ -1,14 +1,16 @@
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.utils import to_categorical
+import joblib
 
 # 1. Load the cleaned data
 print("Loading processed data...")
-df = pd.read_pickle('../model/cleaned_data.pkl')
+df = pd.read_pickle('../models/cleaned_data.pkl')
 
 # 2. Vectorization (Turning text into numbers the AI can understand)
 print("Converting text to vectors (TF-IDF)...")
@@ -35,7 +37,10 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 # 5. Train the Model
 print("Starting training...")
 model.fit(X_train, y_train_cat, epochs=10, batch_size=32, validation_data=(X_test, y_test_cat))
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(df['Category'])
 
 # 6. Save the trained brain
-model.save('/home/ramusakthivel/resume_project/resume_model.h5')
+joblib.dump(tfidf, '../models/tfidf_vectorizer.pkl')
+joblib.dump(label_encoder, '../models/label_encoder.pkl')
 print("Model saved successfully as resume_model.h5")
