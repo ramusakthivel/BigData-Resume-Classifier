@@ -5,8 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 
 # 1. Load the model and the data to recreate the 'categories'
-model = load_model('/home/ramusakthivel/resume_project/resume_model.h5')
-df = pd.read_pickle('/home/ramusakthivel/resume_project/cleaned_data.pkl')
+model = load_model('../models/resume_model.h5')
+df = pd.read_pickle('../models/cleaned_data.pkl')
 
 # 2. Re-initialize the Vectorizer (Must match the training script)
 tfidf = TfidfVectorizer(max_features=3000)

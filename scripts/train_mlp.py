@@ -8,7 +8,7 @@ from tensorflow.keras.utils import to_categorical
 
 # 1. Load the cleaned data
 print("Loading processed data...")
-df = pd.read_pickle('/home/ramusakthivel/resume_project/cleaned_data.pkl')
+df = pd.read_pickle('../model/cleaned_data.pkl')
 
 # 2. Vectorization (Turning text into numbers the AI can understand)
 print("Converting text to vectors (TF-IDF)...")

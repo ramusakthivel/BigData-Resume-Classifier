@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # 1. Load Data directly from your CSV
 print("Loading dataset...")
-df = pd.read_csv('/home/ramusakthivel/resume_project/resume_data.csv')
+df = pd.read_csv('../data/resume_data.csv')
 
 # 2. Basic Cleaning
 def clean_text(text):
